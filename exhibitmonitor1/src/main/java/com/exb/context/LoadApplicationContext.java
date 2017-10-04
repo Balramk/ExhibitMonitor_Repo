@@ -8,22 +8,21 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import com.exb.provider.XMLParser;
+import com.exb.util.XMLParser;
 
 public class LoadApplicationContext {
 	private static XMLParser parser = null;
-	private static Map<String, String> xmlFileMap = null;
-	private static LoadApplicationContext context = null;
 	public static Map<String, String> proFileMap = null;
+	public static Map<String, String> xmlFileMap = null;
+	private static LoadApplicationContext context = null;
 	
 	static {
-		
 		try{
 			parser = XMLParser.getXMLParser();
 			xmlFileMap = parser.getXMLFileMap();
-			proFileMap = new HashMap<String, String>();
-			proFileMap.put("b.csv", "29-09-2017");
 			
+			/*proFileMap = new HashMap<String, String>();
+			proFileMap.put("b.csv", "29-09-2017");*/
 		}catch (SAXException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
@@ -32,9 +31,8 @@ public class LoadApplicationContext {
 			e.printStackTrace();
 		}
 	}
-	private LoadApplicationContext() {
-		//No code
-	}
+    //Constructor
+	
 	public static LoadApplicationContext loadContext()throws SAXException, IOException, ParserConfigurationException {
 		if(context == null) {
 			synchronized(LoadApplicationContext.class) {

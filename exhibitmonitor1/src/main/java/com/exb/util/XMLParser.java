@@ -1,4 +1,4 @@
-package com.exb.provider;
+package com.exb.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +51,10 @@ public class XMLParser {
 		}
 	}
 	
+	public Map<String, String> getXMLFileMap() {
+		return xmlFileMap;
+	}
+	
 	public static XMLParser getXMLParser() throws SAXException, IOException, ParserConfigurationException{
 		if(parser == null){
 			synchronized(XMLParser.class) {
@@ -60,9 +64,5 @@ public class XMLParser {
 			}
 		}
 		return parser;
-	}
-
-	public Map<String, String> getXMLFileMap() {
-		return xmlFileMap;
 	}
 }
